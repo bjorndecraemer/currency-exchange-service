@@ -2,7 +2,6 @@ package com.bjornspetprojects.currencyexchangeservice.bootstrap;
 
 import com.bjornspetprojects.currencyexchangeservice.beans.ExchangeValue;
 import com.bjornspetprojects.currencyexchangeservice.repositories.ExchangeValueRepository;
-import com.bjornspetprojects.currencyexchangeservice.services.ExchangeValueService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +17,7 @@ public class TestDataCommandLineRunner implements CommandLineRunner {
     }
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         exchangeValueRepository.save(new ExchangeValue("USD","INL",new BigDecimal(75)));
         exchangeValueRepository.save(new ExchangeValue("INL","USD",new BigDecimal(0.13333333)));
         exchangeValueRepository.save(new ExchangeValue("USD","EUR",new BigDecimal(0.88)));
