@@ -1,8 +1,6 @@
 package com.bjornspetprojects.currencyexchangeservice.beans;
 
-import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,30 +9,24 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "exchange_value")
 public class ExchangeValue {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String from_value;
-    private String to_value;
+    @Column(name = "from_value")
+    private String from;
+    @Column(name = "to_value")
+    private String to;
     private BigDecimal conversionMultiple;
     @Transient
     private Integer port;
 
-    public ExchangeValue() {
-    }
-
-    public ExchangeValue(String from_value, String to_value, BigDecimal conversionMultiple) {
-        this.from_value = from_value;
-        this.to_value = to_value;
+    public ExchangeValue(String from, String to, BigDecimal conversionMultiple) {
+        this.from = from;
+        this.to = to;
         this.conversionMultiple = conversionMultiple;
-    }
-
-    public ExchangeValue(String from_value, String to_value, BigDecimal conversionMultiple, Integer port) {
-        this.from_value = from_value;
-        this.to_value = to_value;
-        this.conversionMultiple = conversionMultiple;
-        this.port = port;
     }
 }

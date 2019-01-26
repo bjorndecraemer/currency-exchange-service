@@ -27,15 +27,10 @@ public class ExchangeValueJpaImpl implements ExchangeValueService {
         Optional<ExchangeValue> exchangeValueOptional = findAll()
                 .stream()
                 .filter(exchangeValue ->
-                    exchangeValue.getFrom_value().equalsIgnoreCase(from) && exchangeValue.getTo_value().equalsIgnoreCase(to)
+                    exchangeValue.getFrom().equalsIgnoreCase(from) && exchangeValue.getTo().equalsIgnoreCase(to)
                 )
                 .findFirst();
-        if(exchangeValueOptional.isPresent()){
-            return exchangeValueOptional.get();
-        }
-        else{
-            return null;
-        }
+        return exchangeValueOptional.orElse(null);
     }
 
     @Override
